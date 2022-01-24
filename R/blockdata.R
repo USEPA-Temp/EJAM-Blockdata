@@ -3,21 +3,25 @@
 #' @title 2010 US Census blocks (locations and FIPS)
 #'
 #' @description
+#'   
 #'   [for 2020 Census data 8.2 million blocks, see census2020download::blocks2020  ]
 #'
 #'   US 2010 Census blocks with lat/lon location and FIPS.
 #'   6,246,672 rows and 22 columns for the 2010 Decennial Census.
 #'   \preformatted{
-#' [1,] "BLOCKID"        # 16-character block FIPS
+#' [1,] "BLOCKID"        # 16-character block FIPS (or is it 15?)
 #' [2,] "BLOCKGROUPFIPS" # 12-character FIPS of blockgroup this block is part of
+#' 
 #' [3,] "STUSAB" # 2-character State abbreviation
 #' [4,] "STATE"  # 2-character State part of FIPS
 #' [5,] "COUNTY" # 3-character County part of FIPS
 #' [6,] "TRACT"  # 6-character Tract part of FIPS
 #' [7,] "BLKGRP" # 1-character blockgroup part of FIPS
 #' [8,] "BLOCK"  # 4-character block part of FIPS
+#' 
 #' [9,] "POP100"  # Population count of block, from Decennial Census
 #' [10,] "HU100"  # Housing units count
+#' 
 #' [11,] "INTPTLAT"  #  latitude in decimal degrees
 #' [12,] "INTPTLON"  #  longitude in decimal degrees
 #' [13,] "BLOCK_LAT_RAD" # in radians
@@ -25,10 +29,13 @@
 #' [15,] "BLOCK_X"  # for the quadtree
 #' [16,] "BLOCK_Y"  # for the quadtree
 #' [17,] "BLOCK_Z"  # for the quadtree
-#' [18,] "ID"   #   a unique ID for the Census blocks
+#' 
+#' [18,] "ID"   #   a unique ID for the Census blocks (simpler key than FIPS?)
+
 #' [19,] "GRID_X" # not sure it is needed
 #' [20,] "GRID_Y" # not sure it is needed
 #' [21,] "GRID_Z" # not sure it is needed
+#' 
 #' [22,] "Census2010Totalpop" # population of blockgroup this block is part of
 #'   }
 NULL

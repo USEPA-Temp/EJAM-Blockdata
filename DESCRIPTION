@@ -1,10 +1,10 @@
 Package: blockdata
 Type: Package
-Title: Census (2010 and 2020?) block data on population counts lat/lon
-Version: 0.1.0
+Title: Census 2010 block data on population counts lat/lon
+Version: 0.1.1
 Author:  Mark Corrales <corrales.mark@epa.gov>
 Maintainer: Mark Corrales <corrales.mark@epa.gov>
-Description: Used by EJAM package
+Description: Used by EJAM package. 2020 data will for now be in census2020download::blocks2020 etc.
 Depends: R (>= 3.5.0)
 License: What license is it under? TBD
 Encoding: UTF-8

@@ -1,4 +1,25 @@
 #' @name blockquadtree
 #' @docType data
-#' @title quad tree format data on locations of US blocks
+#' @title quad tree format data on locations of US Census 2010 blocks
+#' 
+#' @description 
+#'  \preformatted{
+#' 
+#'  Formal class 'QuadTree' [package "SearchTrees"] with 7 slots
+#'    ..@ ref      :<externalptr> 
+#'    ..@ numNodes : int 6281
+#'    ..@ dataNodes: int 4043
+#'    ..@ maxDepth : int 7
+#'    ..@ maxBucket: int 50030
+#'    ..@ totalData: int 6246672
+#'    ..@ dataType : chr "point"
+#'    ..$ data  :<externalptr> 
+#'    ..$ points: int 6246672
+#'    
+#'   # 2016 code that created quaddata and blockquadtree: 
+#'   
+#'   env$quaddata <- env$blockdata[ , .(BLOCK_X, BLOCK_Z, BLOCK_Y, BLOCKID)]
+#'   env$blockquadtree <- SearchTrees::createTree(env$quaddata, treeType = "quad", dataType = "point")
+#'   
+#'   }
 NULL
