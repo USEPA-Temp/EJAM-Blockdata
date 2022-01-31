@@ -1,6 +1,6 @@
 Package: blockdata
 Type: Package
-Title: Census 2010 block data on population counts lat/lon
+Title: Census 2010 block data on population counts and lat/lon
 Version: 0.1.1
 Author:  Mark Corrales <corrales.mark@epa.gov>
 Maintainer: Mark Corrales <corrales.mark@epa.gov>
