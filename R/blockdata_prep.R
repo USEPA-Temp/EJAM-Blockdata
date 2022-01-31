@@ -67,31 +67,42 @@ blockdata_prep <- function(blockdatalocation='blockdata.rdata') {
 
   blockdata <- cbind(do.call(paste0, blockdata[,.(STATE,COUNTY,TRACT,BLKGRP,BLOCK)]), blockdata)
   names(blockdata)[names(blockdata)=="V1"] <- "BLOCKID"
-  data.table::setkey(blockdata, "GRID_X","GRID_Y","GRID_Z")  # IS THIS REALLY USED LATER SOMEWHERE??? does it somehow speed up queries of blockdata for finding all within radius miles of a facility point?
   
+  # as of 1/2022:
+  # tables()
+  #         NAME      NROW NCOL      MB                                                       COLS              KEY
+  # 1:  blockdata 6,246,672   17  1,181 blockfips,bgfips,STUSAB,blockpop2010,INTPTLAT,INTPTLON,... blockfips,bgfips
+  #
+  # names(blockdata)
+  # [1] "blockfips"      "bgfips"         "STUSAB"         "blockpop2010"   "INTPTLAT"       "INTPTLON"       "BLOCK_LAT_RAD" 
+  # [8] "BLOCK_LONG_RAD" "BLOCK_X"        "BLOCK_Y"        "BLOCK_Z"        "ID"             "GRID_X"         "GRID_Y"        
+  # [15] "GRID_Z"         "bgpop2010"      "blockwt"       
   
-  return(blockdata)
-  
+  # it was even bigger before some columns renamed or dropped:
   # for the 2010 block data, this ends up as a 335 MB file on disk and 
   # 1.4 GIG in RAM uncompressed. It does not need to be that big.
   # blockdata <- blockdata_prep(blockdatalocation = 'blockdata.rdata')
   # > data.table::tables()
   #         NAME      NROW NCOL     MB                                                 COLS                  KEY
-  # 1: blockdata 6,246,672   22  1,397 BLOCKID,BLOCKGROUPFIPS,STUSAB,STATE,COUNTY,TRACT,... GRID_X,GRID_Y,GRID_Z
+  # 1: blockdata 6,246,672   22  1,397  BLOCKID,BLOCKGROUPFIPS,STUSAB,STATE,COUNTY,TRACT,... GRID_X,GRID_Y,GRID_Z
   # Total: 1,397MB
   # 
-  # names(blockdata)
-  # [1] "BLOCKID"            "BLOCKGROUPFIPS"    
-  # [3] "STUSAB"             "STATE"             
-  # [5] "COUNTY"             "TRACT"             
-  # [7] "BLKGRP"             "BLOCK"             
-  # [9] "POP100"             "HU100"             
-  # [11] "INTPTLAT"           "INTPTLON"          
-  # [13] "BLOCK_LAT_RAD"      "BLOCK_LONG_RAD"    
-  # [15] "BLOCK_X"            "BLOCK_Y"           
-  # [17] "BLOCK_Z"            "ID"                
-  # [19] "GRID_X"             "GRID_Y"            
-  # [21] "GRID_Z"             "Census2010Totalpop"
-  # 
+  
+  ####################### DECIDED TO DROP MOST COLUMNS - SAVE RAM AND DISK SPACE AND NOT NEEDED ANYWAY
+  
+  blockdata[ , c('STATE', 'COUNTY', 'TRACT', 'BLKGRP', 'BLOCK', 'HU100') := NULL]
+  data.table::setnames(blockdata, 'Census2010Totalpop', 'bgpop2010')
+  data.table::setnames(blockdata, 'BLOCKID', 'blockfips')
+  data.table::setnames(blockdata, 'BLOCKGROUPFIPS', 'bgfips')
+  data.table::setnames(blockdata, 'POP100', 'blockpop2010')
+  blockdata[ , blockwt := blockpop2010 / bgpop2010] # the ones with zero population were already removed
+  # # maybe can drop more here, like bgpop2010 and blockpop2010... only need the weights actually?
+  # blockdata[ , c('blockpop2010', 'bgpop2010') := NULL]
+  
+  # data.table::setkey(blockdata, "GRID_X","GRID_Y","GRID_Z")  # IS THIS REALLY USED LATER SOMEWHERE? These are not the fields used to make quaddata.
+  
+  data.table::setkey(blockdata, 'blockfips', 'bgfips')
+  # saveRDS(blockdata, file = './data/blockdata2010.rda')
+  return(blockdata)
 }
 
