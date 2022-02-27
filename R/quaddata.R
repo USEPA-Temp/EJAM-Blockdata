@@ -1,18 +1,17 @@
 #' @name quaddata
 #' @docType data
-#' @title quad tree data on locations of US blocks (6,246,672 in the Census 2010-based data here)
-#' 
-#' @description This is just selected columns from block dataset
+#' @title quad tree data on locations of US Census blocks 
+#' @seealso blockdata blockquadtree
+#' @description   This has selected columns from Census block dataset.
 #' \preformatted{
 #' 
-#'   2010 data was created in 2016 files:
-#'   
-#'   Code that created blockdata, quaddata, blockquadtree, and localtree:
+#'   Code that created blockdata, quaddata, blockquadtree:
+#'     (also localtree has to be created during runtime. 
+#'     cannot be saved as data file beforehand)
 #'   
 #'   blockdata <- 0
-#'   quaddata <- blockdata[ , .(BLOCK_X, BLOCK_Z, BLOCK_Y, BLOCKID)]
+#'   quaddata <- blockdata[ , .(BLOCK_X, BLOCK_Z, BLOCK_Y, blockid)]
 #'   blockquadtree <- SearchTrees::createTree(quaddata, treeType = "quad", dataType = "point")
-#'   localtree     <- SearchTrees::createTree(quaddata, treeType = "quad", dataType = "point")
 #'   
 #'   2010 data format:
 #'   
@@ -21,21 +20,7 @@
 #'   $ BLOCK_X: num  -2442 -2440 -2440 -2439 -2440 ...
 #'   $ BLOCK_Z: num  3112 3115 3114 3115 3114 ...
 #'   $ BLOCK_Y: num  -144 -144 -144 -144 -143 ...
-#'   $ BLOCKID: chr  "0201600010011250" "0201600010011270" "0201600010011291" "0201600010011297" ...
+#'   $ blockid: chr  "0201600010011250" "0201600010011270" "0201600010011291" "0201600010011297" ...
 #' }
 #' 
-#'   \preformatted{
-#'
-#'  localtree seemed to be a duplicate of that blockquadtree data 
-#'  
-#'    And tried
-#'     saveRDS(localtree, file = './data/localtree.rda')
-#'    since 
-#'  BUILDING THIS localtree TAKES MAYBE 30 SECONDS, 
-#'  so it should be done when creating package and saved as data like quaddata
-#'  But there is a problem doing that- localtree.rda has magic number 'X'
-#'   Use of save vesions prior to 2 is deprecated. 
-#'   So it can get created on launch for now. 
-#'     
-#'   }
 NULL
