@@ -5,6 +5,7 @@
 \alias{blockdata}
 \alias{_PACKAGE}
 \alias{blockdata-package}
+\alias{@details}
 \title{blockdata: Census 2010 block data on population counts and lat/lon}
 \description{
 Used by EJAM package. 2020 data will for now be in census2020download::blocks2020 etc.

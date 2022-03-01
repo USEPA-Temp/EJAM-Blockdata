@@ -1,4 +1,4 @@
-#' @name blockwts2020
+#' @name blockwts
 #' @docType data
 #' @title 2020 Decennial Census block group weights
 #' 
@@ -10,14 +10,14 @@
 #'   average person in the buffer, as the population weighted mean
 #'   of blockgroup scores of all the blocks in the buffer.
 #'   
-#' @details  This is drawn from blocks2020 dataset 
+#' @details   
 #' 
 #'  \preformatted{
 #'   blockfips is the 15 character Census Bureau FIPS code for each Census block
 #'   blockid will be a unique integer ID 1 through total number of blocks, 
 #'     to be used as a more efficient indexing than a FIPS code is.
 #'   
-#'   bgfips from blocks2020 is the 12 character Census Bureau FIPS code 
+#'   bgfips  is the 12 character Census Bureau FIPS code 
 #'     for the parent blockgroup (i.e., the one containing the given block).
 #'     and bgfips is used to join to a blockgroup dataset to get indicator scores.
 #'   bgid will be a unique integer ID 1 through total number of unique blockgroups,
