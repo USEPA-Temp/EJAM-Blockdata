@@ -2,12 +2,13 @@
 #' @name blockdata
 #' @aliases blockdata-package
 #' 
-#' @md 
+#'   @details  
+#' @md  
 #' 
-#' This package provides Census 2010 block data for use in the EJAM package.
+#'   This package provides Census 2010 block data for use in the EJAM package.
 #'   Census 2010 dataset was obtained in 2016, reformatted here in 2021-2022.
 #'   Census 2020 dataset was obtained in 2021, see census2020download package.
-#'   ##################################################
+#'   ############################################################## #
 #'   
 #'   @details # Format to be used starting 2/22/2022, for Census 2010 and 2020 datasets:
 #'   
@@ -16,7 +17,7 @@
 #'   @details ## **The Census 2010 data** 
 #'  
 #'     > tables()
-#'              NAME      NROW NCOL    MB  COLS                                                        KEY
+#'                NAME      NROW NCOL    MB  COLS                                                        KEY
 #'   1:    *blockdata* 6,246,672   17 1,181 blockfips,bgfips,STUSAB,blockpop2010,INTPTLAT,INTPTLON,...  blockfips,bgfips
 #'   2: *blockid2fips* 6,246,672    2   548 blockid,blockfips    KEY = blockid,blockfips
 #'   3:  *blockpoints* 6,246,672    3   119 blockid,lat,lon      KEY = blockid,lat,lon
@@ -24,15 +25,19 @@
 #'   5:     *quaddata* 6,246,672    4   167 BLOCK_X,BLOCK_Z,BLOCK_Y,blockid  KEY = blockid,BLOCK_X,BLOCK_Y,BLOCK_Z
 #'   Total: 2,147MB
 #'  
-#'      > round(file.info(list.files())[,1,drop=F]/1e6,1)
-#'                 approx MB file size
-#'   *blockdata.rdata*   363.7  ** Will be dropped - was used by doaaggregate()
-#'   *blockpoints.rda*    68.9  ** actually not essential, but keep just in case. this just has lat lon, but seems big. 
-#'   *quaddata.rda*      134.7  
-#'   *blockwts.rda*       30.1  
-#'   *blockid2fips.rda*   17.1  ** this is huge in RAM, but small on disk
-#'   *blockquadtree.rda*   0.0
+#'     > filesizeinfo <- round(file.info(list.files(path = './data/',full.names = TRUE))[,1,drop=F]/1e6,0)
+#'     > filesizeinfo[order(filesizeinfo$size,decreasing = T),,drop=F]
+#'                 
+#'                  approx MB file size
+#'      *quaddata.rda*  141
+#'   *blockpoints.rda*   69   ** actually not essential, but keep just in case. this just has lat lon, but seems big. 
+#'      *blockwts.rda*   30
+#'  *blockid2fips.rda*   17 ** this is huge in RAM, but small on disk
+#' *blockquadtree.rda*    0
+#' *blockquadtree.rda*    0
 #' 
+#'   *blockdata.rdata*   364  ** Huge file, removed, was used by doaaggregate(), 
+#'        essential info is in other files here.
 #' 
 #'   >    head(blockid2fips,2); str(blockid2fips)
 #'      blockid        blockfips
