@@ -1,0 +1,18 @@
+#' @name blockpoints
+#' @docType data
+#' @title  Decennial Census block group lat lon
+#' 
+#' @description   A data.table 
+#'   *blockpoints* 6,246,672    3   119 blockid,lat,lon      KEY = blockid,lat,lon
+#' 
+#'  \preformatted{
+#'   blockid will be a unique integer ID 1 through total number of blocks, 
+#'     to be used as a more efficient indexing than a FIPS code is.
+#'   lat and lon are in decimal degrees, the internal point of each 
+#'   Census block provided by Census Bureau.
+#'   This is just in case we want to look back at lat lon
+#'   but distance calculations are based on quaddata and blockquadtree
+#'   which are already precalculated based on the lat lon points. 
+#'  }
+#'
+NULL

@@ -18,13 +18,10 @@
 #'  
 #'     > tables()
 #'                NAME      NROW NCOL    MB  COLS                                                        KEY
-#'   1: NO LONGER USED:   *blockdata* 6,246,672   17 1,181 blockfips,bgfips,STUSAB,blockpop2010,INTPTLAT,INTPTLON,...  blockfips,bgfips
-
 #'   2: *blockid2fips* 6,246,672    2   548 blockid,blockfips    KEY = blockid,blockfips
 #'   3:  *blockpoints* 6,246,672    3   119 blockid,lat,lon      KEY = blockid,lat,lon
 #'   4:     *blockwts* 6,246,672    3   132 blockid,bgfips,blockwt  KEY = blockid,bgfips
 #'   5:     *quaddata* 6,246,672    4   167 BLOCK_X,BLOCK_Z,BLOCK_Y,blockid  KEY = blockid,BLOCK_X,BLOCK_Y,BLOCK_Z
-#'   Total: 2,147MB
 #'  
 #'     > filesizeinfo <- round(file.info(list.files(path = './data/',full.names = TRUE))[,1,drop=F]/1e6,0)
 #'     > filesizeinfo[order(filesizeinfo$size,decreasing = T),,drop=F]
@@ -35,10 +32,6 @@
 #'      *blockwts.rda*   30
 #'  *blockid2fips.rda*   17 ** this is huge in RAM, but small on disk
 #' *blockquadtree.rda*    0
-#' *blockquadtree.rda*    0
-#' 
-#'   *blockdata.rdata*   364  ** Huge file, removed, was used by doaaggregate(), 
-#'        essential info is in other files here.
 #' 
 #'   >    head(blockid2fips,2); str(blockid2fips)
 #'      blockid        blockfips
@@ -101,8 +94,8 @@
 #'    - attr(*, "year")= num 2010
 #' 
 #'  ############################################################# #
-#'  
-#'   > str((blockdata))  # but this will be replaced by a few smaller files.
+#'  ### OLD FILE NO LONGER USED HERE: 
+#'   > str((blockdata))  # but this was replaced by a few smaller files.
 #'   # 
 #'  Classes ‘data.table’ and 'data.frame':	6246672 obs. of  17 variables:
 #'  $ blockfips     : chr  "0100102010011000" "0100102010011003" "0100102010011005" "0100102010011007" ...
