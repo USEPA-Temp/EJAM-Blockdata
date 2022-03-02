@@ -18,7 +18,8 @@
 #'  
 #'     > tables()
 #'                NAME      NROW NCOL    MB  COLS                                                        KEY
-#'   1:    *blockdata* 6,246,672   17 1,181 blockfips,bgfips,STUSAB,blockpop2010,INTPTLAT,INTPTLON,...  blockfips,bgfips
+#'   1: NO LONGER USED:   *blockdata* 6,246,672   17 1,181 blockfips,bgfips,STUSAB,blockpop2010,INTPTLAT,INTPTLON,...  blockfips,bgfips
+
 #'   2: *blockid2fips* 6,246,672    2   548 blockid,blockfips    KEY = blockid,blockfips
 #'   3:  *blockpoints* 6,246,672    3   119 blockid,lat,lon      KEY = blockid,lat,lon
 #'   4:     *blockwts* 6,246,672    3   132 blockid,bgfips,blockwt  KEY = blockid,bgfips
