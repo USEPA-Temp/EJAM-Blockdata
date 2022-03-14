@@ -5,11 +5,11 @@
 #' @description   This has selected columns from Census block dataset.
 #' \preformatted{
 #' 
-#'   Code that created blockdata, quaddata, blockquadtree:
+#'   Code that created quaddata, blockquadtree:
 #'     (also localtree has to be created during runtime. 
 #'     cannot be saved as data file beforehand)
 #'   
-#'   blockdata <- 0
+#'   blockdata <- 0 # created temporarily from a table with lat lon, such as blockpoints.rdata
 #'   quaddata <- blockdata[ , .(BLOCK_X, BLOCK_Z, BLOCK_Y, blockid)]
 #'   blockquadtree <- SearchTrees::createTree(quaddata, treeType = "quad", dataType = "point")
 #'   
