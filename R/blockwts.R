@@ -1,6 +1,6 @@
 #' @name blockwts
 #' @docType data
-#' @title 2020 Decennial Census block group weights
+#' @title Decennial Census block group weights
 #' 
 #' @description 
 #'   A data.table with    blockwt, and 
